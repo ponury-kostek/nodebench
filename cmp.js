@@ -26,22 +26,60 @@ const values = [
 	function a() {
 	}
 ];
+const values2 = [
+	undefined,
+	null,
+	true,
+	1,
+	1.2,
+	'string',
+	[
+		1,
+		2,
+		3
+	],
+	{
+		a : 'a',
+		b : 'b',
+		c : 'c'
+	},
+	() => {
+	},
+	function a() {
+	}
+];
 const length = values.length;
-suite.add('==', function () {
+suite.add('diff ==', function () {
 	for (var i = 0, j = length; i < length; i++, j--) {
-		values[i] == values[j];
+		values[i] == values2[j];
 	}
-}).add("===", function () {
+}).add("diff ===", function () {
 	for (var i = 0, j = length; i < length; i++, j--) {
-		values[i] === values[j];
+		values[i] === values2[j];
 	}
-}).add('!=', function () {
+}).add('diff !=', function () {
 	for (var i = 0, j = length; i < length; i++, j--) {
-		values[i] != values[j];
+		values[i] != values2[j];
 	}
-}).add("!==", function () {
+}).add("diff !==", function () {
 	for (var i = 0, j = length; i < length; i++, j--) {
-		values[i] !== values[j];
+		values[i] !== values2[j];
+	}
+}).add('same ==', function () {
+	for (var i = 0, j = length; i < length; i++, j--) {
+		values[i] == values2[i];
+	}
+}).add("same ===", function () {
+	for (var i = 0, j = length; i < length; i++, j--) {
+		values[i] === values2[i];
+	}
+}).add('same !=', function () {
+	for (var i = 0, j = length; i < length; i++, j--) {
+		values[i] != values2[i];
+	}
+}).add("same !==", function () {
+	for (var i = 0, j = length; i < length; i++, j--) {
+		values[i] !== values2[i];
 	}
 }).on('cycle', function (event) {
 	console.log(String(event.target));
