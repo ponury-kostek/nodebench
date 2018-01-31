@@ -5,7 +5,7 @@
 const Benchmark = require("benchmark");
 const suite = new Benchmark.Suite;
 
-function obj() {
+function Obj() {
 	this.a = "a";
 	this.b = [
 		1,
@@ -55,7 +55,7 @@ class newObj3 {
 	}
 }
 
-function objf() {
+function Objf() {
 	this.a = "a";
 	this.b = [
 		1,
@@ -66,7 +66,7 @@ function objf() {
 	this.d = 1;
 }
 
-objf.prototype.f = function (a) {
+Objf.prototype.f = function (a) {
 	return this.d + a;
 };
 
@@ -119,12 +119,8 @@ class newObj3f {
 	}
 }
 
-/*
-var o1 = new obj(), o2 = newObj(), o3 = newObj2();
-console.log(o1.f(2), o2.f(2), o3.f(2));
-*/
 suite.add("new                ", function () {
-	const o = new obj();
+	const o = new Obj();
 }).add("newObj             ", function () {
 	const o = newObj();
 }).add("newObj2            ", function () {
@@ -132,7 +128,7 @@ suite.add("new                ", function () {
 }).add("newObj3            ", function () {
 	const o = new newObj3();
 }).add("new with method    ", function () {
-	const o = new objf();
+	const o = new Objf();
 }).add("newObj with method ", function () {
 	const o = newObjf();
 }).add("newObj2 with method", function () {
@@ -140,7 +136,7 @@ suite.add("new                ", function () {
 }).add("newObj3 with method", function () {
 	const o = new newObj3f();
 }).add("new with method    ", function () {
-	const o = new objf();
+	const o = new Objf();
 	o.f(2);
 }).add("newObj with method ", function () {
 	const o = newObjf();
