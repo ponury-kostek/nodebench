@@ -17,12 +17,12 @@ const obj = {
 for (var key in obj) {
 	console.log(key);
 }
-suite.add('hasOwnProperty', function () {
+suite.add('var hasOwnProperty', function () {
 	for (var key in obj) {
 		obj.hasOwnProperty(key);
 	}
-}).add('hasOwnProperty', function () {
-	for (var key in obj) {
+}).add('const hasOwnProperty', function () {
+	for (const key in obj) {
 		obj.hasOwnProperty(key);
 	}
 }).add('in', function () {

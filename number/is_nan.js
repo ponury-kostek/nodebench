@@ -9,6 +9,9 @@ for (var i = 0; i < 10; i++) {
 	console.log('isNan(value)   ', isNaN(value));
 	console.log('value !== value', value !== value);
 }
+const nan = (value) => {
+	return value !== value;
+}
 function is_nan(value) {
 	return value !== value;
 }
@@ -21,6 +24,11 @@ suite.add('isNaN', function () {
 	for (var i = 0; i < 1000; i++) {
 		const value = (i % 3) / (i % 3);
 		is_nan(value);
+	}
+}).add('nan', function () {
+	for (var i = 0; i < 1000; i++) {
+		const value = (i % 3) / (i % 3);
+		nan(value);
 	}
 }).add('value !== value', function () {
 	for (var i = 0; i < 1000; i++) {
