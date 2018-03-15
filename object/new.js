@@ -152,3 +152,31 @@ suite.add("new                ", function () {
 }).on("complete", function () {
 	console.log("Fastest is " + this.filter("fastest").map("name"));
 }).run({"async": true});
+
+function Person() {
+	this.name = '';
+}
+
+Person.prototype.add = function (name) {
+	this.name = name;
+}
+
+
+class Osoba {
+	test = '';
+	constructor() {
+		this.name = '';
+	}
+	add(name) {
+		this.name = name;
+	}
+}
+
+
+Osoba.prototype.asd = function () {
+
+};
+
+const p = new Person();
+p.add('asdada');
+

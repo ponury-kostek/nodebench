@@ -11,12 +11,12 @@ const Benchmark = require('benchmark');
 let suite = new Benchmark.Suite;
 suite.add('Array 10', function () {
 	const array = [];
-	for (var i = 0; i < 10; i++) {
+	for (let i = 0; i < 10; i++) {
 		array_add_unique(array, i);
 	}
 }).add('Set 10', function () {
 	const set = new Set();
-	for (var i = 0; i < 10; i++) {
+	for (let i = 0; i < 10; i++) {
 		set.add(i);
 	}
 }).on('cycle', function (event) {
@@ -24,14 +24,14 @@ suite.add('Array 10', function () {
 }).on('complete', function () {
 	console.log('Fastest is ' + this.filter('fastest').map('name'));
 	suite = new Benchmark.Suite;
-	suite.add('Array 100', function () {
+	suite.add('Array 50', function () {
 		const array = [];
-		for (var i = 0; i < 100; i++) {
+		for (let i = 0; i < 50; i++) {
 			array_add_unique(array, i);
 		}
-	}).add('Set 100', function () {
+	}).add('Set 50', function () {
 		const set = new Set();
-		for (var i = 0; i < 100; i++) {
+		for (let i = 0; i < 50; i++) {
 			set.add(i);
 		}
 	}).on('cycle', function (event) {
@@ -39,14 +39,14 @@ suite.add('Array 10', function () {
 	}).on('complete', function () {
 		console.log('Fastest is ' + this.filter('fastest').map('name'));
 		suite = new Benchmark.Suite;
-		suite.add('Array 1000', function () {
+		suite.add('Array 100', function () {
 			const array = [];
-			for (var i = 0; i < 1000; i++) {
+			for (let i = 0; i < 100; i++) {
 				array_add_unique(array, i);
 			}
-		}).add('Set 1000', function () {
+		}).add('Set 100', function () {
 			const set = new Set();
-			for (var i = 0; i < 1000; i++) {
+			for (let i = 0; i < 100; i++) {
 				set.add(i);
 			}
 		}).on('cycle', function (event) {
