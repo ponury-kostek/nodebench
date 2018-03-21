@@ -2,7 +2,7 @@
  * @author Michał Żaloudik <michal.zaloudik@redcart.pl>
  */
 "use strict";
-const Benchmark = require('benchmark');
+const Benchmark = require("benchmark");
 const suite = new Benchmark.Suite;
 const values = [
 	true,
@@ -34,29 +34,34 @@ const values = [
 	true,
 	false
 ];
+
+function ok() {
+	return 1;
+}
+
+function not() {
+	return 2;
+}
+
 const length = values.length;
-suite.add('(value)', function () {
+suite.add("if return ", function () {
 	for (let i = 0; i < length; i++) {
 		if (values[i]) {
+			ok();
+			return;
 		}
+		not();
 	}
-}).add("(!value)", function () {
+}).add("if else", function () {
 	for (let i = 0; i < length; i++) {
-		if (!values[i]) {
+		if (values[i]) {
+			ok();
+		} else {
+			not();
 		}
 	}
-}).add('(value === true)', function () {
-	for (let i = 0; i < length; i++) {
-		if (values[i] === true) {
-		}
-	}
-}).add("(value === false)", function () {
-	for (let i = 0; i < length; i++) {
-		if (values[i] === false) {
-		}
-	}
-}).on('cycle', function (event) {
+}).on("cycle", function (event) {
 	console.log(String(event.target));
-}).on('complete', function () {
-	console.log('Fastest is ' + this.filter('fastest').map('name'));
+}).on("complete", function () {
+	console.log("Fastest is " + this.filter("fastest").map("name"));
 }).run();

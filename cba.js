@@ -10,17 +10,17 @@ suite.add('native', function () {
 	}
 	const values = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
 	const length = values.length;
-	for(var i = 0; i < length; i++) {
+	for(let i = 0; i < length; i++) {
 		fn(values[i][0],values[i][1]);
 	}
 }).add('arrow function', function () {
-	function fn(a,b) {
+	const fn = (a,b) => {
 		return a + b;
-	}
+	};
 	const values = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
 	const length = values.length;
-	for(var i = 0; i < length; i++) {
-		(() => {fn(values[i][0],values[i][1])})();
+	for(let i = 0; i < length; i++) {
+		fn(values[i][0],values[i][1]);
 	}
 }).add('call', function () {
 	function fn(a,b) {
@@ -28,7 +28,7 @@ suite.add('native', function () {
 	}
 	const values = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
 	const length = values.length;
-	for(var i = 0; i < length; i++) {
+	for(let i = 0; i < length; i++) {
 		fn.call(null, values[i][0],values[i][1]);
 	}
 }).add("bind", function () {
@@ -37,7 +37,7 @@ suite.add('native', function () {
 	}
 	const values = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
 	const length = values.length;
-	for(var i = 0; i < length; i++) {
+	for(let i = 0; i < length; i++) {
 		fn.bind(null, values[i][0],values[i][1])();
 	}
 }).add('apply', function () {
@@ -46,7 +46,7 @@ suite.add('native', function () {
 	}
 	const values = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
 	const length = values.length;
-	for(var i = 0; i < length; i++) {
+	for(let i = 0; i < length; i++) {
 		fn.apply(null, values[i]);
 	}
 }).on('cycle', function (event) {
